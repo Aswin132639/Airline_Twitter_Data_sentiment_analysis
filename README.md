@@ -23,4 +23,66 @@ This study contributes to sentiment analysis literature by offering a clear, rep
 3.	To evaluate deep learning models with traditional sentiment analysis techniques. The study will evaluate the accuracy, precision, recall, and F1-score of deep learning models against classical machine learning models such as Support Vector Machines (SVM) and Naïve Bayes.
 ![image](https://github.com/user-attachments/assets/f764a721-0969-4f35-a449-9bde5b2b39f0)
 
+#VISUALIZATION
+![image](https://github.com/user-attachments/assets/fbd54aac-2575-4eae-b631-58ad20bc2100)
+
+Rank	Negative Reason	Number of Tweets
+1	Customer Service Issue	2,910
+2	Late Flight	1,665
+3	Can't Tell	1,190
+4	Cancelled Flight	847
+5	Lost Luggage	724
+6	Bad Flight	580
+7	Flight Booking Problems	529
+8	Flight Attendant Complaints	481
+9	Long Lines	178
+10	Damaged Luggage	74
+
+![image](https://github.com/user-attachments/assets/2ac86ad7-1219-476b-a047-a23fb23fcc3b)
+
+![image](https://github.com/user-attachments/assets/f0752af3-6cd8-4857-acbb-c525eff86ee6)
+
+![image](https://github.com/user-attachments/assets/ecd13624-fdbd-4d78-8ef2-31a05bd79215)
+
+![image](https://github.com/user-attachments/assets/8d224585-7209-46d9-a832-ff83e7b05412)
+
+![image](https://github.com/user-attachments/assets/45a33056-2d6e-429b-a4c2-5c6d8fbeced8)
+
+![image](https://github.com/user-attachments/assets/3e8ef90a-1e11-47e0-98fa-561b8ec754bf)
+
+![image](https://github.com/user-attachments/assets/488f8b1b-5898-459c-8277-7399944e1b35)
+
+![image](https://github.com/user-attachments/assets/7a16c67e-9d45-4047-9bec-e3bc7b9202f9)
+
+This performance is at a very computationally costly rate, though. Each epoch for training took upwards of 5,500 seconds (or approximately 92 minutes), making BERT less suitable for computing environments with fewer resources. BERT is more memory-intensive, needs more advanced GPUs, and takes longer to train compared to LSTM, so it is less ideal for rapid prototyping or integration into light applications.
+Despite this, BERT's generalization capability, contextual richness, and greater overall accuracy position it particularly well for applications requiring a high degree of accuracy in natural language comprehension. Its performance warrants the additional computational cost where erroneous sentiment tagging may have severe reputational or strategic implications, such as in real-time monitoring of customer feedback in the airline sector.
+# MODEL COMPARISION
+The comparative analysis of the BERT and LSTM models presents insightful observations of their performance patterns. The two models were both trained using the same pre-processed dataset, divided in an 80:20 proportion, to ensure that there was a fair and uniform basis of comparison. As far as overall accuracy is concerned, the BERT model performed slightly better than the LSTM model 80% vs. 78%, respectively.
+Where BERT truly has a discernible edge is in classifying neutral and positive sentiments, which are more subtle and context dependent. This is largely because BERT uses a bidirectional transformer model that can see word relationships in both directions, thus being incredibly good at picking up on subtleties of language and shifts in context such as sarcasm, negation, or mixed emotions. In contrast, LSTM models, even with their memory cell mechanism, tend to falter on such complexities unless specifically designed or large.
+Yet, LSTM performed unexpectedly well in detecting negative tweets, with a competitive F1-score of 86%. This may be explained by the fact that negative feedback tends to use more explicit and direct language, which can be picked up by LSTM without requiring intricate contextual hints.
+There is a substantial trade-off in terms of computational efficiency. BERT requires significantly more training time and hardware resources, with each epoch taking almost 90 minutes to train, whereas LSTM achieves this in a fraction of the time. In real-time or edge deployment scenarios, especially in airline customer service systems where feedback needs to be analyzed in a timely manner, LSTM provides a better cost-performance ratio. However, for high-stakes or finely nuanced applications such as the tracking of public sentiment during service disruptions BERT provides deeper analytical insight.
+Though BERT has superior classification accuracy and contextual understanding, LSTM is still relevant in resource-scarce environments. A preference between them is a matter of weighting usage-case factors: performance vs. efficiency.
+
+#CONCLUSION
+
+The purpose of this research was to compare the performance of two deep learning models Long Short-Term Memory (LSTM) and Bidirectional Encoder Representations from Transformers (BERT) in conducting sentiment analysis on the Twitter US Airline Sentiment Dataset. The overall purpose was to ascertain the effectiveness with which the models could classify tweets into three general classes of sentiments: positive, neutral, and negative. In pursuing this endeavour, the project sought to evaluate the feasibility, effectiveness, and reliability of both models within the field of actual airline brand tracking.
+The study commenced with a systematic review of current sentiment analysis methods, covering both traditional machine learning and deep learning models. The growing relevance of social media sentiment to companies, especially such customer-oriented industries as aviation, was a compelling motivation for the research. Twitter public opinion presents both challenges and opportunities to airlines, and automatic detection and classification of such opinion can facilitate rapid customer response and effective reputation management.
+Through the development and implementation of LSTM and BERT models, the project managed to attain its set objectives. The models were trained on the cleaned data after rigorous cleaning and tokenisation procedures. Both models were tested with standard classification measures such as accuracy, precision, recall, and F1-score. The LSTM model had an accuracy of 78%, while that of the BERT model was 80% accuracy, which was a bit higher. Specifically, BERT performed more accurately in differentiating between positive and neutral sentiments, which tends to require a richer contextual understanding.
+This chapter summarizes the principal findings, discusses future research opportunities, and gives a reflective evaluation of the project process. The report is concluded by giving an overview of the work that was done and its broader implications.
+
+#FUTURE WORK
+Although this study yielded significant results and fulfilled its primary objectives, there exist various avenues through which the project may be expanded to develop more robust and scalable sentiment analysis models. The present implementation was confined to textual data from a single social media platform Twitter and pertained specifically to one sector, namely the airline industry. Future research can involve cross-platform sentiment analysis that integrates tweets with reviews from other websites such as Facebook, Instagram, or TripAdvisor to derive a more comprehensive picture of the public opinion.
+One aspect that is ready to be improved upon is the addition of sarcasm and emotion detection modules. In BERT and LSTM testing, a lot of the neutral or confusing tweets are mislabelled due to sarcastic tone or contradictory emotions within a single post. Employing multi-task learning methods that would simultaneously train a model to detect both sentiment and sarcasm can significantly improve classification accuracy, especially in the neutral category. One more beneficial aspect of future research is hyperparameter tuning. For the present project, the parameters were fixed, i.e., batch size 32 and 5 epochs for LSTM and batch size 16 and 3 epochs for BERT. Though these parameters performed well, it might be the case that adjusting the learning rate, dropout rate, and units could further improve the model performance.
+Automated techniques like Grid Search or Bayesian Optimisation may be utilized to simplify this procedure. Furthermore, the idea of building hybrid models can be investigated in future work. For instance, researchers can try to combine the contextual power of BERT and the sequential learning capacity of BiLSTM. A model that uses BERT embeddings as input to a BiLSTM layer can potentially benefit from both global context and temporal relationships. There is some early work that has suggested that this hybrid model improves classification accuracy on certain NLP tasks, e.g., sentiment analysis.
+To enhance scalability without incurring computational overhead, you can use model compression techniques, such as knowledge distillation. Compressed transformer model variants, such as DistilBERT or TinyBERT, offer a tuned trade-off between accuracy and performance and thus are a good match for real-time applications where latency is of paramount importance. Lastly, one other direction of interest is multimodal sentiment analysis. Most Twitter posts comprise images, emojis, and hashtags in addition to text. The inclusion of visual information or metadata (for instance, likes and retweets) could introduce an additional layer of information, which may augment sentiment classification. This would involve the use of computer vision models and multi-input models but would bring the system nearer to how humans receive sentiment through more than a single cue aside from text.
+
+
+
+
+
+
+
+
+
+
 
